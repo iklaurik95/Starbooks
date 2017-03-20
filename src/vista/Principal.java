@@ -63,6 +63,7 @@ public class Principal extends JFrame {
 		btnSocios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO
+				socioControlador.abrirGestionSocio();
 			}
 		});
 		btnSocios.setBounds(49, 69, 121, 23);
@@ -86,7 +87,7 @@ public class Principal extends JFrame {
 		btnLibros.setBounds(49, 191, 121, 23);
 		contentPane.add(btnLibros);
 	}
-	
+		
 	public Socio_controlador getSocioControlador() {
 		return socioControlador;
 	}

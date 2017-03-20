@@ -12,6 +12,8 @@ import controlador.Socio_controlador;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Formulario_socio extends JDialog {
 
@@ -112,19 +114,42 @@ public class Formulario_socio extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
+				JButton btnGuardar = new JButton("Guardar");
+				btnGuardar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						socioControlador.guardarFormularioSocio(textoNombre.getText(),textoApellido.getText(),
+						textoDni.getText(),textoDireccion.getText(),textoPoblacion.getText(),textoProvincia.getText());
+						
+						socioControlador.cerrarFormularioSocio();
+					}
+				});
+				btnGuardar.setActionCommand("Guardar");
+				buttonPane.add(btnGuardar);
+				getRootPane().setDefaultButton(btnGuardar);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						socioControlador.cerrarFormularioSocio();
+					}
+				});
+				btnCancelar.setActionCommand("Cancelar");
+				buttonPane.add(btnCancelar);
 			}
 		}
 	}
 	
+	public void limpiarFormularioSocio() {
+		// TODO Auto-generated method stub
+		textoNombre.setText(null);
+		textoApellido.setText(null);
+		textoDni.setText(null);
+		textoDireccion.setText(null);
+		textoPoblacion.setText(null);
+		textoProvincia.setText(null);
+	}
+
 	public Socio_controlador getSocioControlador() {
 		return socioControlador;
 	}

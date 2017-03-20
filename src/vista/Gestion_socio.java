@@ -38,6 +38,11 @@ public class Gestion_socio extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JButton btnAnadirSocio = new JButton("Anadir Socio");
+			btnAnadirSocio.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					socioControlador.abrirFormularioSocio();
+				}
+			});
 			btnAnadirSocio.setBounds(59, 89, 119, 23);
 			contentPanel.add(btnAnadirSocio);
 		}
@@ -68,12 +73,12 @@ public class Gestion_socio extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnCancelar = new JButton("Cancelar");
-				btnCancelar.setActionCommand("Cancel");
+				btnCancelar.setActionCommand("Cancelar");
 				buttonPane.add(btnCancelar);
 			}
 		}
 	}
-	
+		
 	public Socio_controlador getSocioControlador() {
 		return socioControlador;
 	}
