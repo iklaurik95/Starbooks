@@ -37,7 +37,7 @@ public class Gestion_socio extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JButton btnAnadirSocio = new JButton("Anadir Socio");
+			JButton btnAnadirSocio = new JButton("A\u00F1adir Socio");
 			btnAnadirSocio.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					socioControlador.abrirFormularioSocio();

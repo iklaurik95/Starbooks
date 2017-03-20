@@ -26,8 +26,6 @@ public class Formulario_socio extends JDialog {
 	private JTextField textoProvincia;
 	private Socio_controlador socioControlador;
 
-	
-
 	/**
 	 * Launch the application.
 	 */
@@ -45,32 +43,32 @@ public class Formulario_socio extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JLabel lblNombre = new JLabel("Nombre");
-			lblNombre.setBounds(46, 40, 46, 14);
+			lblNombre.setBounds(46, 40, 69, 14);
 			contentPanel.add(lblNombre);
 		}
 		{
 			JLabel lblApellido = new JLabel("Apellido");
-			lblApellido.setBounds(46, 65, 46, 14);
+			lblApellido.setBounds(46, 65, 69, 14);
 			contentPanel.add(lblApellido);
 		}
 		{
 			JLabel lblDireccion = new JLabel("Direccion");
-			lblDireccion.setBounds(46, 115, 46, 14);
+			lblDireccion.setBounds(46, 115, 69, 14);
 			contentPanel.add(lblDireccion);
 		}
 		{
 			JLabel lblProvincia = new JLabel("Provincia");
-			lblProvincia.setBounds(46, 165, 46, 14);
+			lblProvincia.setBounds(46, 165, 69, 14);
 			contentPanel.add(lblProvincia);
 		}
 		{
 			JLabel lblDni = new JLabel("DNI");
-			lblDni.setBounds(46, 90, 46, 14);
+			lblDni.setBounds(46, 90, 69, 14);
 			contentPanel.add(lblDni);
 		}
 		{
 			JLabel lblPoblacion = new JLabel("Poblacion");
-			lblPoblacion.setBounds(46, 140, 46, 14);
+			lblPoblacion.setBounds(46, 140, 69, 14);
 			contentPanel.add(lblPoblacion);
 		}
 		{

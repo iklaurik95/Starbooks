@@ -1,6 +1,8 @@
 package vista;
 
+import controlador.Libro_controlador;
 import controlador.Socio_controlador;
+import modelo.Libro_modelo;
 import modelo.Socio_modelo;
 
 public class Main {
@@ -10,25 +12,36 @@ public class Main {
 		
 		//Controladores
 		Socio_controlador socioControlador = new Socio_controlador();
+		Libro_controlador libroControlador = new Libro_controlador();
 		
 		//Modelos
 		Socio_modelo socioModelo = new Socio_modelo("biblioteca");
+		Libro_modelo libroModelo = new Libro_modelo("biblioteca");
 		
 		//Ventanas		
 		Principal principal = new Principal();
 		Gestion_socio gestionSocio = new Gestion_socio(principal,true);
 		Formulario_socio formularioSocio = new Formulario_socio(gestionSocio,true);
-		
+		Gestion_libro gestionLibro = new Gestion_libro(principal,true);
+		Formulario_libro formularioLibro = new Formulario_libro(gestionLibro,true);
+				
 		//Definir controladores a las ventanas
 		principal.setSocioControlador(socioControlador);
 		gestionSocio.setSocioControlador(socioControlador);
 		formularioSocio.setSocioControlador(socioControlador);
+	    principal.setLibroControlador(libroControlador);
+	    gestionLibro.setLibroControlador(libroControlador);
+	    formularioLibro.setLibroControlador(libroControlador);
 		
 		//Definir ventanas y modelos al controlador
 		socioControlador.setPrincipal(principal);
 		socioControlador.setGestionSocio(gestionSocio);
 		socioControlador.setFormularioSocio(formularioSocio);
 		socioControlador.setSocioModelo(socioModelo);
+		libroControlador.setPrincipal(principal);
+		libroControlador.setGestionLibro(gestionLibro);
+		libroControlador.setFormularioLibro(formularioLibro);
+		libroControlador.setLibroModelo(libroModelo);
 		
 		principal.setVisible(true);
 	}

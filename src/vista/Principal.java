@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.Libro_controlador;
 import controlador.Socio_controlador;
 
 import javax.swing.JTextField;
@@ -21,6 +22,8 @@ public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private Socio_controlador socioControlador;
+	private Libro_controlador libroControlador;
+	
 	
 	/**
 	 * Launch the application.
@@ -82,6 +85,7 @@ public class Principal extends JFrame {
 		btnLibros.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO
+				libroControlador.abrirGestionLibro();
 			}
 		});
 		btnLibros.setBounds(49, 191, 121, 23);
@@ -94,5 +98,13 @@ public class Principal extends JFrame {
 
 	public void setSocioControlador(Socio_controlador socioControlador) {
 		this.socioControlador = socioControlador;
+	}
+	
+	public Libro_controlador getLibroControlador() {
+		return libroControlador;
+	}
+
+	public void setLibroControlador(Libro_controlador libroControlador) {
+		this.libroControlador = libroControlador;
 	}
 }
