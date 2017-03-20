@@ -7,11 +7,11 @@ public class Conector {
 	
 	protected Connection conexion;
 
-	Conector(String dbIzena) {
+	Conector(String biblioteca) {
 		
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
-				this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/" + dbIzena, "root", "");
+				this.conexion = DriverManager.getConnection("jdbc:mysql://localhost/" + biblioteca, "root", "");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

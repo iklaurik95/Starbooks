@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Socio_modelo extends Conector {
 
-	public Socio_modelo(String dbIzena) {
-		super(dbIzena);
+	public Socio_modelo(String biblioteca) {
+		super(biblioteca);
 	}
 	
 	public Socio select(int id) {

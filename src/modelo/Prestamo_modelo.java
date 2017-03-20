@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class Prestamo_modelo extends Conector {
 
-	public Prestamo_modelo(String dbIzena) {
-		super(dbIzena);
+	public Prestamo_modelo(String biblioteca) {
+		super(biblioteca);
 		// TODO Auto-generated constructor stub
 	}
 
