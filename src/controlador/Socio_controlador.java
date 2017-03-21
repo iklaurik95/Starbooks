@@ -1,9 +1,13 @@
 package controlador;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.security.auth.callback.TextOutputCallback;
 
 import modelo.Socio;
 import modelo.Socio_modelo;
+import vista.Borrado_socio;
 import vista.Formulario_socio;
 import vista.Gestion_socio;
 import vista.Principal;
@@ -14,6 +18,7 @@ public class Socio_controlador {
 	private Gestion_socio gestionSocio;
 	private Principal principal;
 	private Socio_modelo socioModelo;
+	private Borrado_socio  borradoSocio;
 	
 	public Socio_modelo getSocioModelo() {
 		return socioModelo;
@@ -33,6 +38,12 @@ public class Socio_controlador {
 	public void setGestionSocio(Gestion_socio gestionSocio) {
 		this.gestionSocio = gestionSocio;
 	}
+	public Borrado_socio getBorradoSocio() {
+		return borradoSocio;
+	}
+	public void setBorradoSocio(Borrado_socio borradoSocio) {
+		this.borradoSocio = borradoSocio;
+	}
 	public Principal getPrincipal() {
 		return principal;
 	}
@@ -51,8 +62,7 @@ public class Socio_controlador {
 		this.formularioSocio.dispose();
 		
 	}
-	
-	
+		
 	public void guardarFormularioSocio(String nombre, String apellido, String dni, String direccion,
 			String poblacion,String provincia) {
 		// TODO Auto-generated method stub
@@ -64,6 +74,17 @@ public class Socio_controlador {
 		// TODO Auto-generated method stub
 		this.gestionSocio.dispose();
 	}
+	public void abrirBorradoSocio() {
+		// TODO Auto-generated method stub
+		this.borradoSocio.setVisible(true);
+		ArrayList<Socio> socios = this.socioModelo.select();
+		Iterator i = socios.iterator();
+		while(i.hasNext()){
+		
+		}
+		
+	}
+	
 	
 
 }

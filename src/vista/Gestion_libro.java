@@ -74,6 +74,11 @@ public class Gestion_libro extends JDialog {
 		}
 		{
 			JButton btnBorrarLibro = new JButton("Borrar Libro");
+			btnBorrarLibro.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+				}
+			});
 			btnBorrarLibro.setBounds(249, 76, 136, 23);
 			getContentPane().add(btnBorrarLibro);
 		}
