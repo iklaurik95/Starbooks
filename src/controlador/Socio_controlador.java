@@ -51,12 +51,18 @@ public class Socio_controlador {
 		this.formularioSocio.dispose();
 		
 	}
+	
+	
 	public void guardarFormularioSocio(String nombre, String apellido, String dni, String direccion,
 			String poblacion,String provincia) {
 		// TODO Auto-generated method stub
 		Socio socio = new Socio(0,nombre,apellido,dni,direccion,poblacion,provincia);
 		
 		this.socioModelo.insert(socio);
+	}
+	public void cerrarGestionSocio() {
+		// TODO Auto-generated method stub
+		this.gestionSocio.dispose();
 	}
 	
 

@@ -73,6 +73,11 @@ public class Gestion_socio extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						socioControlador.cerrarGestionSocio();
+					}
+				});
 				btnCancelar.setActionCommand("Cancelar");
 				buttonPane.add(btnCancelar);
 			}

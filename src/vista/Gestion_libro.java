@@ -42,7 +42,12 @@ public class Gestion_libro extends JDialog {
 			getContentPane().add(buttonPane);
 			{
 				JButton btnCancelar = new JButton("Cancelar");
-				btnCancelar.setActionCommand("Cancel");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						libroControlador.cerrarGestionLibro();
+					}
+				});
+				btnCancelar.setActionCommand("Cancelar");
 				buttonPane.add(btnCancelar);
 			}
 		}
@@ -59,22 +64,22 @@ public class Gestion_libro extends JDialog {
 					libroControlador.abrirFormularioLibro();
 				}
 			});
-			btnAnadirLibro.setBounds(72, 76, 106, 23);
+			btnAnadirLibro.setBounds(72, 76, 136, 23);
 			getContentPane().add(btnAnadirLibro);
 		}
 		{
 			JButton btnBuscarLibro = new JButton("Buscar Libro");
-			btnBuscarLibro.setBounds(72, 136, 106, 23);
+			btnBuscarLibro.setBounds(72, 136, 136, 23);
 			getContentPane().add(btnBuscarLibro);
 		}
 		{
 			JButton btnBorrarLibro = new JButton("Borrar Libro");
-			btnBorrarLibro.setBounds(249, 76, 106, 23);
+			btnBorrarLibro.setBounds(249, 76, 136, 23);
 			getContentPane().add(btnBorrarLibro);
 		}
 		{
 			JButton btnModificarLibro = new JButton("Modificar Libro");
-			btnModificarLibro.setBounds(249, 136, 106, 23);
+			btnModificarLibro.setBounds(249, 136, 136, 23);
 			getContentPane().add(btnModificarLibro);
 		}
 	}

@@ -4,6 +4,7 @@ import modelo.Libro;
 import modelo.Libro_modelo;
 import vista.Formulario_libro;
 import vista.Gestion_libro;
+import vista.Main;
 import vista.Principal;
 
 public class Libro_controlador {
@@ -11,6 +12,7 @@ public class Libro_controlador {
 	private Gestion_libro gestionLibro;
 	private Principal principal;
 	private Libro_modelo libroModelo;
+	
 	
 	public Formulario_libro getFormularioLibro() {
 		return formularioLibro;
@@ -55,6 +57,10 @@ public class Libro_controlador {
 		
 		this.libroModelo.insert(libro);
 	
+	}
+	public void cerrarGestionLibro() {
+		// TODO Auto-generated method stub
+		this.gestionLibro.dispose();
 	}
 	
 	
