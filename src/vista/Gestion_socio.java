@@ -20,6 +20,7 @@ public class Gestion_socio extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private Socio_controlador socioControlador;
+	private Borrado_socio borradoSocio;
 
 	/**
 	 * Launch the application.
@@ -50,7 +51,7 @@ public class Gestion_socio extends JDialog {
 			JButton btnBorrarSocio = new JButton("Borrar Socio");
 			btnBorrarSocio.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					socioControlador.abrirBorradoSocio();
+					
 				}
 			});
 			btnBorrarSocio.setBounds(238, 89, 119, 23);

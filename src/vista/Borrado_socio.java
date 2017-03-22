@@ -9,11 +9,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.Socio_controlador;
+import modelo.Socio;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.awt.event.ActionEvent;
 
 public class Borrado_socio extends JDialog {
 
@@ -26,6 +31,7 @@ public class Borrado_socio extends JDialog {
 	private JTextField textoProvincia;
 	private JTextField textoDni;
 	private Socio_controlador socioControlador;
+	private JComboBox listaSocio;
 
 	/**
 	 * Launch the application.
@@ -49,10 +55,15 @@ public class Borrado_socio extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane);
 			{
-				JButton btnGuardar = new JButton("Guardar");
-				btnGuardar.setActionCommand("Guardar");
-				buttonPane.add(btnGuardar);
-				getRootPane().setDefaultButton(btnGuardar);
+				JButton btnBorrar = new JButton("Borrar");
+				btnBorrar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+					}
+				});
+				btnBorrar.setActionCommand("Guardar");
+				buttonPane.add(btnBorrar);
+				getRootPane().setDefaultButton(btnBorrar);
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");
@@ -61,7 +72,22 @@ public class Borrado_socio extends JDialog {
 			}
 		}
 		
-		JComboBox listaSocio = new JComboBox();
+		listaSocio = new JComboBox();
+		listaSocio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(listaSocio.getSelectedIndex() == -1){
+					limpiarFormulario();
+				}else{
+					String datosSocio = (String) listaSocio.getSelectedItem();
+					if(datosSocio != null){
+						String[] partes = datosSocio.split(":");
+						int idSocio = Integer.parseInt(partes[0]);
+						socioControlador.rellenarFormulario(idSocio);
+						
+					}
+				}
+			}
+		});
 		listaSocio.setBounds(254, 22, 121, 20);
 		getContentPane().add(listaSocio);
 		
@@ -148,6 +174,17 @@ public class Borrado_socio extends JDialog {
 		textoDni.setColumns(10);
 	}
 	
+	protected void limpiarFormulario() {
+		// TODO Auto-generated method stub
+		textoId.setText(null);
+		textoNombre.setText(null);
+		textoApellido.setText(null);
+		textoDireccion.setText(null);
+		textoPoblacion.setText(null);
+		textoProvincia.setText(null);
+		textoDni.setText(null);
+	}
+
 	public Socio_controlador getSocioControlador() {
 		return socioControlador;
 	}
@@ -155,4 +192,13 @@ public class Borrado_socio extends JDialog {
 	public void setSocioControlador(Socio_controlador socioControlador) {
 		this.socioControlador = socioControlador;
 	}
+	public void rellenarDatosFormulario(Socio socio) {
+		// TODO Auto-generated method stub
+		textoId.setText(String.valueOf(socio.getId()));
+		textoNombre.setText(socio.getNombre());
+		textoApellido.setText(socio.getApellido());
+		textoDireccion.setText(socio.getDireccion());
+	}
+	
+		
 }

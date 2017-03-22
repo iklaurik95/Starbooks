@@ -74,17 +74,9 @@ public class Socio_controlador {
 		// TODO Auto-generated method stub
 		this.gestionSocio.dispose();
 	}
-	public void abrirBorradoSocio() {
+	public void rellenarFormulario(int idSocio) {
 		// TODO Auto-generated method stub
-		this.borradoSocio.setVisible(true);
-		ArrayList<Socio> socios = this.socioModelo.select();
-		Iterator i = socios.iterator();
-		while(i.hasNext()){
-		
-		}
-		
+		Socio socio = socioModelo.select(idSocio);
+		this.borradoSocio.rellenarDatosFormulario(socio);
 	}
-	
-	
-
 }
