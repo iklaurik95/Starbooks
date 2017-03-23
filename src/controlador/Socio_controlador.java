@@ -79,4 +79,15 @@ public class Socio_controlador {
 		Socio socio = socioModelo.select(idSocio);
 		this.borradoSocio.rellenarDatosFormulario(socio);
 	}
+	public void abrirBorrarSocio() {
+		// TODO Auto-generated method stub
+		ArrayList<Socio> socios = socioModelo.select();
+		borradoSocio.rellenarListaSocios(socios);
+		this.borradoSocio.setVisible(true);
+	}
+	public void abrirBorradoSocio() {
+		// TODO Auto-generated method stub
+		this.borradoSocio.setVisible(true);
+	}
+	
 }

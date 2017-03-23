@@ -58,7 +58,7 @@ public class Borrado_socio extends JDialog {
 				JButton btnBorrar = new JButton("Borrar");
 				btnBorrar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
+						socioControlador.abrirBorrarSocio();
 					}
 				});
 				btnBorrar.setActionCommand("Guardar");
@@ -83,6 +83,7 @@ public class Borrado_socio extends JDialog {
 						String[] partes = datosSocio.split(":");
 						int idSocio = Integer.parseInt(partes[0]);
 						socioControlador.rellenarFormulario(idSocio);
+						
 						
 					}
 				}
@@ -174,7 +175,7 @@ public class Borrado_socio extends JDialog {
 		textoDni.setColumns(10);
 	}
 	
-	protected void limpiarFormulario() {
+	public void limpiarFormulario() {
 		// TODO Auto-generated method stub
 		textoId.setText(null);
 		textoNombre.setText(null);
@@ -200,5 +201,15 @@ public class Borrado_socio extends JDialog {
 		textoDireccion.setText(socio.getDireccion());
 	}
 	
+	public void rellenarListaSocios(ArrayList socios) {
+		Iterator<Socio> iterator = socios.iterator();
+		while(iterator.hasNext()){
+			Socio socio = iterator.next();
+			
+			listaSocio.addItem(socio.getId() + ": " + socio.getNombre() + ": " + socio.getApellido() + ": " + socio.getDireccion()
+			+ ": " + socio.getPoblacion() + ": " + socio.getProvincia() + ": " + socio.getDni());
+		}
+		listaSocio.setSelectedIndex(-1);
+	}
 		
 }
