@@ -55,15 +55,15 @@ public class Borrado_socio extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane);
 			{
-				JButton btnBorrar = new JButton("Borrar");
-				btnBorrar.addActionListener(new ActionListener() {
+				JButton btnEliminar = new JButton("Eliminar");
+				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						socioControlador.abrirBorrarSocio();
+						socioControlador.abrirEliminarSocio();
 					}
 				});
-				btnBorrar.setActionCommand("Guardar");
-				buttonPane.add(btnBorrar);
-				getRootPane().setDefaultButton(btnBorrar);
+				btnEliminar.setActionCommand("Eliminar");
+				buttonPane.add(btnEliminar);
+				getRootPane().setDefaultButton(btnEliminar);
 			}
 			{
 				JButton btnCancelar = new JButton("Cancelar");

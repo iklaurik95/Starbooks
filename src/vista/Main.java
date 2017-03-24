@@ -23,6 +23,7 @@ public class Main {
 		Gestion_socio gestionSocio = new Gestion_socio(principal,true);
 		Formulario_socio formularioSocio = new Formulario_socio(gestionSocio,true);
 		Borrado_socio borradoSocio = new Borrado_socio(gestionSocio,true);
+		Busqueda_socio busquedaSocio = new Busqueda_socio(gestionSocio,true);
 		Gestion_libro gestionLibro = new Gestion_libro(principal,true);
 		Formulario_libro formularioLibro = new Formulario_libro(gestionLibro,true);
 				
@@ -31,6 +32,7 @@ public class Main {
 		gestionSocio.setSocioControlador(socioControlador);
 		formularioSocio.setSocioControlador(socioControlador);
 		borradoSocio.setSocioControlador(socioControlador);
+		busquedaSocio.setSocioControlador(socioControlador);
 	    principal.setLibroControlador(libroControlador);
 	    gestionLibro.setLibroControlador(libroControlador);
 	    formularioLibro.setLibroControlador(libroControlador);
@@ -40,6 +42,7 @@ public class Main {
 		socioControlador.setGestionSocio(gestionSocio);
 		socioControlador.setFormularioSocio(formularioSocio);
 		socioControlador.setBorradoSocio(borradoSocio);
+		socioControlador.setBusquedaSocio(busquedaSocio);
 		socioControlador.setSocioModelo(socioModelo);
 		libroControlador.setPrincipal(principal);
 		libroControlador.setGestionLibro(gestionLibro);

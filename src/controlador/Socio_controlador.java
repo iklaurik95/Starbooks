@@ -8,6 +8,7 @@ import javax.security.auth.callback.TextOutputCallback;
 import modelo.Socio;
 import modelo.Socio_modelo;
 import vista.Borrado_socio;
+import vista.Busqueda_socio;
 import vista.Formulario_socio;
 import vista.Gestion_socio;
 import vista.Principal;
@@ -19,7 +20,14 @@ public class Socio_controlador {
 	private Principal principal;
 	private Socio_modelo socioModelo;
 	private Borrado_socio  borradoSocio;
+	private Busqueda_socio busquedaSocio;
 	
+	public Busqueda_socio getBusquedaSocio() {
+		return busquedaSocio;
+	}
+	public void setBusquedaSocio(Busqueda_socio busquedaSocio) {
+		this.busquedaSocio = busquedaSocio;
+	}
 	public Socio_modelo getSocioModelo() {
 		return socioModelo;
 	}
@@ -79,7 +87,7 @@ public class Socio_controlador {
 		Socio socio = socioModelo.select(idSocio);
 		this.borradoSocio.rellenarDatosFormulario(socio);
 	}
-	public void abrirBorrarSocio() {
+	public void abrirEliminarSocio() {
 		// TODO Auto-generated method stub
 		ArrayList<Socio> socios = socioModelo.select();
 		borradoSocio.rellenarListaSocios(socios);
@@ -88,6 +96,18 @@ public class Socio_controlador {
 	public void abrirBorradoSocio() {
 		// TODO Auto-generated method stub
 		this.borradoSocio.setVisible(true);
+	}
+	public void abrirBusquedaSocio() {
+		// TODO Auto-generated method stub
+		
+		ArrayList<Socio> socios = socioModelo.select();
+		busquedaSocio.rellenarTablaSocios(socios);
+		
+		this.busquedaSocio.setVisible(true);
+	}
+	public void cerrarBusquedaSocio() {
+		// TODO Auto-generated method stub
+		this.busquedaSocio.dispose();
 	}
 	
 }
