@@ -31,6 +31,9 @@ public class Busqueda_socio extends JDialog {
 	/**
 	 * Launch the application.
 	 */
+	
+	
+	
 
 	/**
 	 * Create the dialog.
@@ -89,7 +92,9 @@ public class Busqueda_socio extends JDialog {
 		
 		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(tablaModel);
 		tablaSocios.setRowSorter(modeloOrdenado);
-		
-		}
+	}
+	
+	
 }
+
 

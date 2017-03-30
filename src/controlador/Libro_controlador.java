@@ -1,7 +1,10 @@
 package controlador;
 
+import java.util.ArrayList;
+
 import modelo.Libro;
 import modelo.Libro_modelo;
+import vista.Busqueda_libro;
 import vista.Formulario_libro;
 import vista.Gestion_libro;
 import vista.Main;
@@ -12,8 +15,8 @@ public class Libro_controlador {
 	private Gestion_libro gestionLibro;
 	private Principal principal;
 	private Libro_modelo libroModelo;
-	
-	
+	private Busqueda_libro busquedaLibro;
+			
 	public Formulario_libro getFormularioLibro() {
 		return formularioLibro;
 	}
@@ -62,7 +65,20 @@ public class Libro_controlador {
 		// TODO Auto-generated method stub
 		this.gestionLibro.dispose();
 	}
-	
+	public Busqueda_libro getBusquedaLibro() {
+		return busquedaLibro;
+	}
+	public void setBusquedaLibro(Busqueda_libro busquedaLibro) {
+		this.busquedaLibro = busquedaLibro;
+	}
+	public void abrirBuscarLibro() {
+		// TODO Auto-generated method stub
+		ArrayList<Libro> libros = libroModelo.select();
+		this.busquedaLibro.rellenarCombobox(libros);
+		
+		this.busquedaLibro.setVisible(true);
+		
+	}
 	
 	
 }

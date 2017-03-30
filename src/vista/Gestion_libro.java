@@ -69,6 +69,11 @@ public class Gestion_libro extends JDialog {
 		}
 		{
 			JButton btnBuscarLibro = new JButton("Buscar Libro");
+			btnBuscarLibro.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					btnBuscarLibroActionPerformed();
+				}
+			});
 			btnBuscarLibro.setBounds(72, 136, 136, 23);
 			getContentPane().add(btnBuscarLibro);
 		}
@@ -89,6 +94,11 @@ public class Gestion_libro extends JDialog {
 		}
 	}
 	
+	protected void btnBuscarLibroActionPerformed() {
+		// TODO Auto-generated method stub
+		libroControlador.abrirBuscarLibro();
+	}
+
 	public Libro_controlador getLibroControlador() {
 		return libroControlador;
 	}

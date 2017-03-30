@@ -26,6 +26,7 @@ public class Main {
 		Busqueda_socio busquedaSocio = new Busqueda_socio(gestionSocio,true);
 		Gestion_libro gestionLibro = new Gestion_libro(principal,true);
 		Formulario_libro formularioLibro = new Formulario_libro(gestionLibro,true);
+		Busqueda_libro busquedaLibro = new Busqueda_libro(gestionLibro,true);
 				
 		//Definir controladores a las ventanas
 		principal.setSocioControlador(socioControlador);
@@ -36,6 +37,7 @@ public class Main {
 	    principal.setLibroControlador(libroControlador);
 	    gestionLibro.setLibroControlador(libroControlador);
 	    formularioLibro.setLibroControlador(libroControlador);
+	    busquedaLibro.setLibroControlador(libroControlador);
 		
 		//Definir ventanas y modelos al controlador
 		socioControlador.setPrincipal(principal);
@@ -48,6 +50,7 @@ public class Main {
 		libroControlador.setGestionLibro(gestionLibro);
 		libroControlador.setFormularioLibro(formularioLibro);
 		libroControlador.setLibroModelo(libroModelo);
+		libroControlador.setBusquedaLibro(busquedaLibro);
 		
 		principal.setVisible(true);
 
