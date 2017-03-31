@@ -87,6 +87,10 @@ public class Busqueda_libro extends JDialog {
 		lblNumpag.setBounds(20, 123, 46, 14);
 		panelTitulo.add(lblNumpag);
 		
+		JPanel panelNumPag = new JPanel();
+		tabbedPane.addTab("NumPag", null, panelNumPag, null);
+		panelNumPag.setLayout(null);
+		
 		JPanel panelAutor = new JPanel();
 		tabbedPane.addTab("Autor", null, panelAutor, null);
 		
@@ -105,12 +109,8 @@ public class Busqueda_libro extends JDialog {
 		panelAutor.add(lblEligeElAutor);
 		
 		listaLibros = new JList();
-		listaLibros.setBounds(122, 183, 182, -109);
+		listaLibros.setBounds(105, 42, 254, 141);
 		panelAutor.add(listaLibros);
-		
-		JPanel panelNumPag = new JPanel();
-		tabbedPane.addTab("NumPag", null, panelNumPag, null);
-		panelNumPag.setLayout(null);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -179,7 +179,7 @@ public class Busqueda_libro extends JDialog {
 		// TODO Auto-generated method stub
 		DefaultListModel defaultListModel = new DefaultListModel();
 		for(Libro libro: libros){
-			defaultListModel.addElement(libro.getTitulo() + libro.getNum_pag());
+			defaultListModel.addElement(libro.getTitulo() + " - " + libro.getNum_pag());
 		}
 		
 		this.listaLibros.setModel(defaultListModel);
