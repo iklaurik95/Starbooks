@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -16,6 +17,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Busqueda_libro extends JDialog {
 
@@ -28,9 +31,6 @@ public class Busqueda_libro extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	
-	
-
 	/**
 	 * Create the dialog.
 	 */
@@ -50,13 +50,18 @@ public class Busqueda_libro extends JDialog {
 		panelTitulo.setLayout(null);
 		
 		comboBoxTitulo = new JComboBox();
-		comboBoxTitulo.setBounds(121, 11, 164, 20);
+		comboBoxTitulo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				comboBoxTituloActionPerdormed();
+			}
+		});
+		comboBoxTitulo.setBounds(121, 11, 276, 20);
 		panelTitulo.add(comboBoxTitulo);
 		
 		textoAutor = new JTextField();
 		textoAutor.setEnabled(false);
 		textoAutor.setEditable(false);
-		textoAutor.setBounds(121, 65, 164, 20);
+		textoAutor.setBounds(121, 65, 276, 20);
 		panelTitulo.add(textoAutor);
 		textoAutor.setColumns(10);
 		
@@ -64,13 +69,9 @@ public class Busqueda_libro extends JDialog {
 		textoNumPag.setEnabled(false);
 		textoNumPag.setEditable(false);
 		textoNumPag.setText("");
-		textoNumPag.setBounds(121, 120, 164, 20);
+		textoNumPag.setBounds(121, 120, 276, 20);
 		panelTitulo.add(textoNumPag);
 		textoNumPag.setColumns(10);
-		
-		JLabel lblEligeTitulo = new JLabel("Elige titulo:");
-		lblEligeTitulo.setBounds(20, 14, 91, 14);
-		panelTitulo.add(lblEligeTitulo);
 		
 		JLabel lblAutor = new JLabel("Autor:");
 		lblAutor.setBounds(20, 68, 46, 14);
@@ -94,6 +95,18 @@ public class Busqueda_libro extends JDialog {
 		}
 	}
 	
+	protected void comboBoxTituloActionPerdormed() {
+		// TODO Auto-generated method stub
+				
+		String item = this.comboBoxTitulo.getSelectedItem().toString();
+		String [] partes = item.split(":");
+		
+		int idLibro = Integer.parseInt(partes[0]); //posicion id
+			
+		this.libroControlador.buscarPorTitulo(idLibro);
+	
+	}
+	
 	public Libro_controlador getLibroControlador() {
 		return libroControlador;
 	}
@@ -104,12 +117,22 @@ public class Busqueda_libro extends JDialog {
 
 	public void rellenarCombobox(ArrayList<Libro> libros) {
 		// TODO Auto-generated method stub
+		DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel<String>();		
 		for(Libro libro : libros){
-			this.comboBoxTitulo.addItem(libro.getId() + ": " + libro.getTitulo());
+			defaultComboBoxModel.addElement(libro.getId() + ": " + libro.getTitulo());
 		}
-		this.comboBoxTitulo.setSelectedIndex(-1);
-	    
+		defaultComboBoxModel.setSelectedItem("Elige un titulo");
+		
+		this.comboBoxTitulo.setModel(defaultComboBoxModel);
 	}
+
+	public void rellenarPestañaTitulo(Libro libro) {
+		// TODO Auto-generated method stub
+		this.textoAutor.setText(libro.getAutor());
+		this.textoNumPag.setText(String.valueOf(libro.getNum_pag()));
+	}
+	
+	
 	
 	
 }

@@ -79,6 +79,12 @@ public class Libro_controlador {
 		this.busquedaLibro.setVisible(true);
 		
 	}
+	public void buscarPorTitulo(int idLibro) {
+		// TODO Auto-generated method stub
+		Libro libro = libroModelo.select(idLibro);
+		this.busquedaLibro.rellenarPestañaTitulo(libro);
+		
+	}
 	
 	
 }
