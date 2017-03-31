@@ -111,4 +111,25 @@ public class Libro_modelo extends Conector {
 
 	}
 
+	public ArrayList<String> selectAutores() {
+		// TODO Auto-generated method stub
+		try {
+			Statement st = this.conexion.createStatement();
+			ResultSet rs = st.executeQuery("SELECT DISTINCT autor FROM libros");
+			
+			ArrayList<String> autores = new ArrayList<String>();
+			while(rs.next()){
+				autores.add(rs.getString("autor"));
+			}
+			return autores;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	
+
 }

@@ -2,6 +2,8 @@ package controlador;
 
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+
 import modelo.Libro;
 import modelo.Libro_modelo;
 import vista.Busqueda_libro;
@@ -74,7 +76,10 @@ public class Libro_controlador {
 	public void abrirBuscarLibro() {
 		// TODO Auto-generated method stub
 		ArrayList<Libro> libros = libroModelo.select();
-		this.busquedaLibro.rellenarCombobox(libros);
+		this.busquedaLibro.rellenarComboboxLibros(libros);
+		
+		ArrayList<String> autores = libroModelo.selectAutores();
+		this.busquedaLibro.rellenarComboboxAutores(autores);
 		
 		this.busquedaLibro.setVisible(true);
 		
@@ -85,6 +90,12 @@ public class Libro_controlador {
 		this.busquedaLibro.rellenarPestañaTitulo(libro);
 		
 	}
+	public void buscarPorAutor(String autor) {
+		// TODO Auto-generated method stub
+		ArrayList<Libro> libros = libroModelo.select(autor);
+		this.busquedaLibro.rellenarListaAutores(libros);
+	}
+	
 	
 	
 }

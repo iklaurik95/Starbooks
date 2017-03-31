@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -19,6 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
+import java.awt.Color;
 
 public class Busqueda_libro extends JDialog {
 
@@ -27,6 +30,9 @@ public class Busqueda_libro extends JDialog {
 	private JTextField textoNumPag;
 	private Libro_controlador libroControlador;
 	private JComboBox comboBoxTitulo;
+	private JComboBox comboBoxAutor;
+	private JList listaLibros;
+	
 
 	/**
 	 * Launch the application.
@@ -83,7 +89,24 @@ public class Busqueda_libro extends JDialog {
 		
 		JPanel panelAutor = new JPanel();
 		tabbedPane.addTab("Autor", null, panelAutor, null);
+		
+		comboBoxAutor = new JComboBox();
+		comboBoxAutor.setBounds(149, 11, 210, 20);
+		comboBoxAutor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				comboBoxAutoresActionPerformed();
+			}
+		});
 		panelAutor.setLayout(null);
+		panelAutor.add(comboBoxAutor);
+		
+		JLabel lblEligeElAutor = new JLabel("Autor:");
+		lblEligeElAutor.setBounds(83, 14, 56, 14);
+		panelAutor.add(lblEligeElAutor);
+		
+		listaLibros = new JList();
+		listaLibros.setBounds(122, 183, 182, -109);
+		panelAutor.add(listaLibros);
 		
 		JPanel panelNumPag = new JPanel();
 		tabbedPane.addTab("NumPag", null, panelNumPag, null);
@@ -95,6 +118,12 @@ public class Busqueda_libro extends JDialog {
 		}
 	}
 	
+	protected void comboBoxAutoresActionPerformed() {
+		// TODO Auto-generated method stub
+		libroControlador.buscarPorAutor(this.comboBoxAutor.getSelectedItem().toString());
+		
+	}
+
 	protected void comboBoxTituloActionPerdormed() {
 		// TODO Auto-generated method stub
 				
@@ -115,7 +144,7 @@ public class Busqueda_libro extends JDialog {
 		this.libroControlador = libroControlador;
 	}
 
-	public void rellenarCombobox(ArrayList<Libro> libros) {
+	public void rellenarComboboxLibros(ArrayList<Libro> libros) {
 		// TODO Auto-generated method stub
 		DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel<String>();		
 		for(Libro libro : libros){
@@ -131,8 +160,31 @@ public class Busqueda_libro extends JDialog {
 		this.textoAutor.setText(libro.getAutor());
 		this.textoNumPag.setText(String.valueOf(libro.getNum_pag()));
 	}
-	
-	
+
+
+
+	public void rellenarComboboxAutores(ArrayList<String> autores) {
+		// TODO Auto-generated method stub
+		DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel<String>();
+		for(String autor: autores){
+			defaultComboBoxModel.addElement(autor);
+		}
+		
+		defaultComboBoxModel.setSelectedItem("Elige un autor");
+		
+		this.comboBoxAutor.setModel(defaultComboBoxModel);
+	}
+
+	public void rellenarListaAutores(ArrayList<Libro> libros) {
+		// TODO Auto-generated method stub
+		DefaultListModel defaultListModel = new DefaultListModel();
+		for(Libro libro: libros){
+			defaultListModel.addElement(libro.getTitulo() + libro.getNum_pag());
+		}
+		
+		this.listaLibros.setModel(defaultListModel);
+	}
+
 	
 	
 }
