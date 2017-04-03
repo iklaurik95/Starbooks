@@ -105,6 +105,7 @@ public class Gestion_libro extends JDialog {
 
 	public void setLibroControlador(Libro_controlador libroControlador) {
 		this.libroControlador = libroControlador;
+		
 	}
 
 }

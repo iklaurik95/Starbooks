@@ -95,7 +95,16 @@ public class Libro_controlador {
 		ArrayList<Libro> libros = libroModelo.select(autor);
 		this.busquedaLibro.rellenarListaAutores(libros);
 	}
-	
-	
+
+	public void buscarNumPagMenorCien() {
+		// TODO Auto-generated method stub
+		ArrayList<Libro> libros = libroModelo.selectMenorCienPag();
+		this.busquedaLibro.rellenarListaLibrosNumPag(libros);
+	}
+	public void buscarNumPagEntreCienYQuinientos() {
+		// TODO Auto-generated method stub
+		ArrayList<Libro> libros = libroModelo.selectEntreCienYQuinientosPag();
+		this.busquedaLibro.rellenarListaLibrosNumPag(libros);
+	}	
 	
 }

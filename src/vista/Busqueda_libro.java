@@ -22,6 +22,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
 import java.awt.Color;
+import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class Busqueda_libro extends JDialog {
 
@@ -32,6 +35,9 @@ public class Busqueda_libro extends JDialog {
 	private JComboBox comboBoxTitulo;
 	private JComboBox comboBoxAutor;
 	private JList listaLibros;
+	private JRadioButton radioButtonMenor100;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JList listaLibrosNumPag;
 	
 
 	/**
@@ -89,7 +95,36 @@ public class Busqueda_libro extends JDialog {
 		
 		JPanel panelNumPag = new JPanel();
 		tabbedPane.addTab("NumPag", null, panelNumPag, null);
+		
+		radioButtonMenor100 = new JRadioButton("<100");
+		radioButtonMenor100.setBounds(39, 23, 109, 23);
+		buttonGroup.add(radioButtonMenor100);
+		radioButtonMenor100.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				radioButtonMenor100ActionPerformed();
+			}
+		});
 		panelNumPag.setLayout(null);
+		panelNumPag.add(radioButtonMenor100);
+		
+		JRadioButton radioButtonEntre100y500 = new JRadioButton("100-500");
+		radioButtonEntre100y500.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				radioButtonEntre100y500ActionPerformed();
+			}
+		});
+		radioButtonEntre100y500.setBounds(39, 79, 109, 23);
+		buttonGroup.add(radioButtonEntre100y500);
+		panelNumPag.add(radioButtonEntre100y500);
+		
+		JRadioButton radioButtonMayor500 = new JRadioButton(">500");
+		radioButtonMayor500.setBounds(39, 140, 109, 23);
+		buttonGroup.add(radioButtonMayor500);
+		panelNumPag.add(radioButtonMayor500);
+		
+		listaLibrosNumPag = new JList();
+		listaLibrosNumPag.setBounds(168, 23, 209, 170);
+		panelNumPag.add(listaLibrosNumPag);
 		
 		JPanel panelAutor = new JPanel();
 		tabbedPane.addTab("Autor", null, panelAutor, null);
@@ -117,7 +152,17 @@ public class Busqueda_libro extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		}
 	}
-	
+
+	protected void radioButtonEntre100y500ActionPerformed() {
+		// TODO Auto-generated method stub
+		libroControlador.buscarNumPagEntreCienYQuinientos();
+	}
+
+	protected void radioButtonMenor100ActionPerformed() {
+		// TODO Auto-generated method stub
+		libroControlador.buscarNumPagMenorCien();
+	}
+
 	protected void comboBoxAutoresActionPerformed() {
 		// TODO Auto-generated method stub
 		libroControlador.buscarPorAutor(this.comboBoxAutor.getSelectedItem().toString());
@@ -185,6 +230,13 @@ public class Busqueda_libro extends JDialog {
 		this.listaLibros.setModel(defaultListModel);
 	}
 
-	
-	
+	public void rellenarListaLibrosNumPag(ArrayList<Libro> libros) {
+		// TODO Auto-generated method stub
+		DefaultListModel defaultListModel= new DefaultListModel();
+		for(Libro libro:libros){
+			defaultListModel.addElement(libro.getTitulo() + " - " + libro.getAutor() + " - " + libro.getNum_pag());
+		}
+		
+		this.listaLibrosNumPag.setModel(defaultListModel);
+	}
 }

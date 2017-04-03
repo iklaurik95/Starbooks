@@ -43,6 +43,44 @@ public class Libro_modelo extends Conector {
 		}
 			return null;
 	}
+	
+	public ArrayList<Libro> selectMenorCienPag(){
+		ArrayList<Libro> libros = new ArrayList<Libro>();
+		try {
+			Statement st = this.conexion.createStatement();
+			ResultSet rs = st.executeQuery("select * from libros where num_pag<100");
+			while (rs.next()) {
+				Libro libro = new Libro(rs.getInt("id"), rs.getString("titulo"), rs.getString("autor"),
+										rs.getInt("num_pag"));
+				libros.add(libro);
+			}
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return libros;
+	}
+	
+	public ArrayList<Libro> selectEntreCienYQuinientosPag(){
+		ArrayList<Libro> libros = new ArrayList<Libro>();
+		try {
+			Statement st = this.conexion.createStatement();
+			ResultSet rs = st.executeQuery("select * from libros where num_pag>500 and num_pag<100");
+			while (rs.next()) {
+				Libro libro = new Libro(rs.getInt("id"), rs.getString("titulo"), rs.getString("autor"),
+										rs.getInt("num_pag"));
+				libros.add(libro);
+			}
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return libros;
+	}
 
 	public ArrayList<Libro> select(String autor) {
 		ArrayList<Libro> libros = new ArrayList<Libro>();
