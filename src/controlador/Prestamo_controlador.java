@@ -2,6 +2,7 @@ package controlador;
 
 import java.util.ArrayList;
 
+import modelo.Libro;
 import modelo.Libro_modelo;
 import modelo.Prestamo_modelo;
 import modelo.Socio;
@@ -69,6 +70,11 @@ public class Prestamo_controlador {
 		// TODO Auto-generated method stub
 		ArrayList<Socio> socios = socioModelo.select();
 		this.formularioPrestamo.rellenarListaSocios(socios);
+	}
+	public void rellenarComboBoxDeLibros() {
+		// TODO Auto-generated method stub
+		ArrayList<Libro> libros = this.libroModelo.select();
+		this.formularioPrestamo.rellenarListaLibros(libros);
 	}
 	
 	

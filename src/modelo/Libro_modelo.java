@@ -183,7 +183,5 @@ public class Libro_modelo extends Conector {
 		}
 		return null;
 	}
-
-	
-
+		
 }

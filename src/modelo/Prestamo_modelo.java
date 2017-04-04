@@ -75,8 +75,7 @@ public class Prestamo_modelo extends Conector {
 	public void insert(Prestamo prestamo) {
 		try {
 			PreparedStatement ps;
-			ps = this.conexion.prepareStatement(
-					"insert into " + "prestamos (id_libro,id_socio,fecha,devuelto)" + " values(?,?,?,?)");
+			ps = this.conexion.prepareStatement("insert into " + "prestamos (id_libro,id_socio,fecha,devuelto)" + " values(?,?,?,?)");
 
 			ps.setInt(1, prestamo.getId_libro()); 
 			ps.setInt(2, prestamo.getId_socio()); 
@@ -91,5 +90,7 @@ public class Prestamo_modelo extends Conector {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 }

@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.Prestamo_controlador;
+import modelo.Libro;
 import modelo.Socio;
 
 import javax.swing.JLabel;
@@ -46,11 +47,6 @@ public class Formulario_prestamo extends JDialog {
 		}
 		
 		comboBoxSocios = new JComboBox();
-		comboBoxSocios.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				rellenarComboBoxSociosActionPerformed();
-			}
-		});
 		comboBoxSocios.setBounds(209, 52, 166, 20);
 		contentPanel.add(comboBoxSocios);
 		
@@ -59,6 +55,11 @@ public class Formulario_prestamo extends JDialog {
 		contentPanel.add(lblLibros);
 		
 		comboBoxLibros = new JComboBox();
+		comboBoxLibros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				prestamoControlador.rellenarComboBoxDeLibros();
+			}
+		});
 		comboBoxLibros.setBounds(209, 116, 166, 20);
 		contentPanel.add(comboBoxLibros);
 		{
@@ -80,11 +81,7 @@ public class Formulario_prestamo extends JDialog {
 			
 	}
 	
-	protected void rellenarComboBoxSociosActionPerformed() {
-		// TODO Auto-generated method stub
-		prestamoControlador.rellenarComboBoxDeSocios();
-	}
-
+	
 	public Prestamo_controlador getPrestamoControlador() {
 		return prestamoControlador;
 	}
@@ -95,11 +92,23 @@ public class Formulario_prestamo extends JDialog {
 	
 	public void rellenarListaSocios(ArrayList<Socio> socios) {
 		// TODO Auto-generated method stub
-		DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel();
 		for(Socio socio:socios){
-			defaultComboBoxModel.addElement(socio.getNombre());
+			comboBoxSocios.addItem(socio.getId() + " : " + socio.getNombre() + " " + socio.getApellido());
 		}
 		
-		this.comboBoxSocios.setModel(defaultComboBoxModel);
+		
 	}
+
+
+	public void rellenarListaLibros(ArrayList<Libro> libros) {
+		// TODO Auto-generated method stub
+		
+		for(Libro libro:libros){
+			comboBoxLibros.addItem(libro.getTitulo());
+		}
+	}
+
+
+	
+	
 }
