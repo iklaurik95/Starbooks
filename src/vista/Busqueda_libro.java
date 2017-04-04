@@ -164,7 +164,7 @@ public class Busqueda_libro extends JDialog {
 
 	protected void radioButtonMayor500ActionPerformed() {
 		// TODO Auto-generated method stub
-		
+		libroControlador.buscarNumPagMayorQuinientos();
 	}
 
 	protected void radioButtonEntre100y500ActionPerformed() {

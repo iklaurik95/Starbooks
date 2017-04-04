@@ -87,7 +87,7 @@ public class Busqueda_socio extends JDialog {
 			tablaModel.addRow(new Object[] {socio.getNombre(),socio.getApellido(),socio.getDireccion(),socio.getPoblacion(),
 						socio.getProvincia(),socio.getDni()});
 			}
-			
+				
 		tablaSocios.setModel(tablaModel);
 		
 		TableRowSorter<DefaultTableModel> modeloOrdenado = new TableRowSorter<DefaultTableModel>(tablaModel);

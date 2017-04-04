@@ -105,6 +105,11 @@ public class Libro_controlador {
 		// TODO Auto-generated method stub
 		ArrayList<Libro> libros = libroModelo.selectEntreCienYQuinientosPag();
 		this.busquedaLibro.rellenarListaLibrosNumPag(libros);
+	}
+	public void buscarNumPagMayorQuinientos() {
+		// TODO Auto-generated method stub
+		ArrayList<Libro> libros = libroModelo.selectMayorQuinientosPag();
+		this.busquedaLibro.rellenarListaLibrosNumPag(libros);
 	}	
 	
 }

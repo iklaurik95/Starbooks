@@ -24,7 +24,7 @@ public class Formulario_prestamo extends JDialog {
 	private Prestamo_controlador prestamoControlador;
 	private JComboBox comboBoxLibros;
 	private JComboBox comboBoxSocios;
-
+	
 	/**
 	 * Launch the application.
 	 */

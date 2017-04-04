@@ -80,6 +80,23 @@ public class Libro_modelo extends Conector {
 		}
 			return libros;
 	}
+	
+	public ArrayList<Libro> selectMayorQuinientosPag(){
+		ArrayList<Libro> libros = new ArrayList<>();
+		try {
+			Statement st = this.conexion.createStatement();
+			ResultSet rs = st.executeQuery("select * from libros where num_pag>500");
+			while (rs.next()) {
+				Libro libro = new Libro(rs.getInt("id"), rs.getString("titulo"), rs.getString("autor"),rs.getInt("num_pag"));
+				
+				libros.add(libro);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			return libros;
+	}
 
 	public ArrayList<Libro> select(String autor) {
 		ArrayList<Libro> libros = new ArrayList<Libro>();
