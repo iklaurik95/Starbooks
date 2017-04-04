@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.Libro_controlador;
+import controlador.Prestamo_controlador;
 import controlador.Socio_controlador;
 
 import javax.swing.JTextField;
@@ -23,8 +24,9 @@ public class Principal extends JFrame {
 	private JPanel contentPane;
 	private Socio_controlador socioControlador;
 	private Libro_controlador libroControlador;
+	private Prestamo_controlador prestamoControlador;
 	
-	
+		
 	/**
 	 * Launch the application.
 	 */
@@ -75,7 +77,8 @@ public class Principal extends JFrame {
 		JButton btnPrestamos = new JButton("Prestamos");
 		btnPrestamos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO				
+				//TODO	
+				prestamoControlador.abrirGestionPrestamo();
 			}
 		});
 		btnPrestamos.setBounds(49, 129, 121, 23);
@@ -106,5 +109,13 @@ public class Principal extends JFrame {
 
 	public void setLibroControlador(Libro_controlador libroControlador) {
 		this.libroControlador = libroControlador;
+	}
+	
+	public Prestamo_controlador getPrestamoControlador() {
+		return prestamoControlador;
+	}
+
+	public void setPrestamoControlador(Prestamo_controlador prestamoControlador) {
+		this.prestamoControlador = prestamoControlador;
 	}
 }

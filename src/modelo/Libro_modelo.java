@@ -67,7 +67,7 @@ public class Libro_modelo extends Conector {
 		ArrayList<Libro> libros = new ArrayList<Libro>();
 		try {
 			Statement st = this.conexion.createStatement();
-			ResultSet rs = st.executeQuery("select * from libros where num_pag>500 and num_pag<100");
+			ResultSet rs = st.executeQuery("select * from libros where num_pag<500 and num_pag>100");
 			while (rs.next()) {
 				Libro libro = new Libro(rs.getInt("id"), rs.getString("titulo"), rs.getString("autor"),
 										rs.getInt("num_pag"));
@@ -76,7 +76,6 @@ public class Libro_modelo extends Conector {
 		
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			return libros;

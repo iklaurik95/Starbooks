@@ -25,6 +25,7 @@ import java.awt.Color;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JScrollPane;
 
 public class Busqueda_libro extends JDialog {
 
@@ -118,13 +119,21 @@ public class Busqueda_libro extends JDialog {
 		panelNumPag.add(radioButtonEntre100y500);
 		
 		JRadioButton radioButtonMayor500 = new JRadioButton(">500");
+		radioButtonMayor500.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				radioButtonMayor500ActionPerformed();
+			}
+		});
 		radioButtonMayor500.setBounds(39, 140, 109, 23);
 		buttonGroup.add(radioButtonMayor500);
 		panelNumPag.add(radioButtonMayor500);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(168, 23, 209, 170);
+		panelNumPag.add(scrollPane);
+		
 		listaLibrosNumPag = new JList();
-		listaLibrosNumPag.setBounds(168, 23, 209, 170);
-		panelNumPag.add(listaLibrosNumPag);
+		scrollPane.setViewportView(listaLibrosNumPag);
 		
 		JPanel panelAutor = new JPanel();
 		tabbedPane.addTab("Autor", null, panelAutor, null);
@@ -151,6 +160,11 @@ public class Busqueda_libro extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		}
+	}
+
+	protected void radioButtonMayor500ActionPerformed() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	protected void radioButtonEntre100y500ActionPerformed() {
@@ -239,4 +253,6 @@ public class Busqueda_libro extends JDialog {
 		
 		this.listaLibrosNumPag.setModel(defaultListModel);
 	}
+	
+	
 }
