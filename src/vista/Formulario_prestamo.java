@@ -18,13 +18,14 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class Formulario_prestamo extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private Prestamo_controlador prestamoControlador;
-	private JComboBox comboBoxLibros;
-	private JComboBox comboBoxSocios;
+	private JTextField textFieldIdSocio;
+	private JTextField textFieldTitulo;
 	
 	/**
 	 * Launch the application.
@@ -41,33 +42,35 @@ public class Formulario_prestamo extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JLabel lblSocios = new JLabel("Socios:");
+			JLabel lblSocios = new JLabel("IdSocio");
 			lblSocios.setBounds(79, 55, 78, 14);
 			contentPanel.add(lblSocios);
 		}
 		
-		comboBoxSocios = new JComboBox();
-		comboBoxSocios.setBounds(209, 52, 166, 20);
-		contentPanel.add(comboBoxSocios);
-		
-		JLabel lblLibros = new JLabel("Libros:");
+		JLabel lblLibros = new JLabel("Titulo");
 		lblLibros.setBounds(79, 119, 78, 14);
 		contentPanel.add(lblLibros);
 		
-		comboBoxLibros = new JComboBox();
-		comboBoxLibros.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				prestamoControlador.rellenarComboBoxDeLibros();
-			}
-		});
-		comboBoxLibros.setBounds(209, 116, 166, 20);
-		contentPanel.add(comboBoxLibros);
+		textFieldIdSocio = new JTextField();
+		textFieldIdSocio.setBounds(152, 52, 147, 20);
+		contentPanel.add(textFieldIdSocio);
+		textFieldIdSocio.setColumns(10);
+		
+		textFieldTitulo = new JTextField();
+		textFieldTitulo.setColumns(10);
+		textFieldTitulo.setBounds(152, 116, 147, 20);
+		contentPanel.add(textFieldTitulo);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						prestamoControlador.rellenarPrestamo(Integer.parseInt(textFieldIdSocio.getText()) + " " + textFieldTitulo.getText());
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -89,26 +92,5 @@ public class Formulario_prestamo extends JDialog {
 	public void setPrestamoControlador(Prestamo_controlador prestamoControlador) {
 		this.prestamoControlador = prestamoControlador;
 	}
-	
-	public void rellenarListaSocios(ArrayList<Socio> socios) {
-		// TODO Auto-generated method stub
-		for(Socio socio:socios){
-			comboBoxSocios.addItem(socio.getId() + " : " + socio.getNombre() + " " + socio.getApellido());
-		}
-		
-		
-	}
-
-
-	public void rellenarListaLibros(ArrayList<Libro> libros) {
-		// TODO Auto-generated method stub
-		
-		for(Libro libro:libros){
-			comboBoxLibros.addItem(libro.getTitulo());
-		}
-	}
-
-
-	
 	
 }

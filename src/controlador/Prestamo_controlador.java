@@ -66,17 +66,11 @@ public class Prestamo_controlador {
 		// TODO Auto-generated method stub
 		this.formularioPrestamo.setVisible(true);
 	}
-	public void rellenarComboBoxDeSocios() {
+	
+	public void rellenarPrestamo(String titulo) {
 		// TODO Auto-generated method stub
-		ArrayList<Socio> socios = socioModelo.select();
-		this.formularioPrestamo.rellenarListaSocios(socios);
+		Libro libro = this.libroModelo.selectPorTitulo(titulo);
+		
 	}
-	public void rellenarComboBoxDeLibros() {
-		// TODO Auto-generated method stub
-		ArrayList<Libro> libros = this.libroModelo.select();
-		this.formularioPrestamo.rellenarListaLibros(libros);
-	}
-	
-	
-	
+		
 }
