@@ -22,8 +22,9 @@ public class Socio_modelo extends Conector {
 			return socio;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
+		//idSocio ez da existitzen
 			return null;
 	}
 	

@@ -68,17 +68,13 @@ public class Formulario_prestamo extends JDialog {
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						prestamoControlador.rellenarPrestamo(Integer.parseInt(textFieldIdSocio.getText()) + " " + textFieldTitulo.getText());
+						prestamoControlador.realizarPrestamo(Integer.parseInt(textFieldIdSocio.getText()), textFieldTitulo.getText());
+						
 					}
 				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
 			}
 		}
 			
@@ -91,6 +87,11 @@ public class Formulario_prestamo extends JDialog {
 
 	public void setPrestamoControlador(Prestamo_controlador prestamoControlador) {
 		this.prestamoControlador = prestamoControlador;
+	}
+	
+	public void limpiarFormularioPrestamo(){
+		textFieldIdSocio.setText(null);
+		textFieldTitulo.setText(null);
 	}
 	
 }

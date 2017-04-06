@@ -1,9 +1,13 @@
 package controlador;
 
 import java.util.ArrayList;
+import java.util.Date;
+
+import javax.swing.JOptionPane;
 
 import modelo.Libro;
 import modelo.Libro_modelo;
+import modelo.Prestamo;
 import modelo.Prestamo_modelo;
 import modelo.Socio;
 import modelo.Socio_modelo;
@@ -67,10 +71,28 @@ public class Prestamo_controlador {
 		this.formularioPrestamo.setVisible(true);
 	}
 	
-	public void rellenarPrestamo(String titulo) {
+	public void realizarPrestamo(int idSocio, String titulo) {
 		// TODO Auto-generated method stub
-		Libro libro = this.libroModelo.selectPorTitulo(titulo);
+		if(this.socioModelo.select(idSocio) != null){
+			Libro libro = this.libroModelo.selectPorTitulo(titulo);
+			Prestamo prestamo = new Prestamo();
+			prestamo.setId_libro(libro.getId());
+			prestamo.setId_socio(idSocio);
+			prestamo.setFecha(new Date());
+			prestamo.setDevuelto(false);
+			this.prestamoModelo.insert(prestamo);
+			JOptionPane.showMessageDialog(this.formularioPrestamo, "Prestamo realizado", "Prestamo", JOptionPane.INFORMATION_MESSAGE);
+			this.formularioPrestamo.limpiarFormularioPrestamo();
+			
+		}else{
+			JOptionPane.showMessageDialog(this.formularioPrestamo, "IdSocio no existe", "Socio", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		
+		
 		
 	}
-		
+	
+	
+	
 }
