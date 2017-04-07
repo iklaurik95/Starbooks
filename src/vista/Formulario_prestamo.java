@@ -79,8 +79,7 @@ public class Formulario_prestamo extends JDialog {
 		}
 			
 	}
-	
-	
+		
 	public Prestamo_controlador getPrestamoControlador() {
 		return prestamoControlador;
 	}

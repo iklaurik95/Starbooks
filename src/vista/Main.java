@@ -33,6 +33,7 @@ public class Main {
 		Busqueda_libro busquedaLibro = new Busqueda_libro(gestionLibro,true);
 		Gestion_prestamo gestionPrestamo = new Gestion_prestamo(principal, true);
 		Formulario_prestamo formularioPrestamo = new Formulario_prestamo(gestionPrestamo, true);
+		Busqueda_prestamo busquedaPrestamo = new Busqueda_prestamo(gestionPrestamo, true);
 		
 				
 		//Definir controladores a las ventanas
@@ -48,6 +49,7 @@ public class Main {
 	    principal.setPrestamoControlador(prestamoControlador);
 	    gestionPrestamo.setPrestamoControlador(prestamoControlador);
 	    formularioPrestamo.setPrestamoControlador(prestamoControlador);
+	    busquedaPrestamo.setPrestamoControlador(prestamoControlador);
 	    
 		
 		//Definir ventanas y modelos al controlador
@@ -68,6 +70,7 @@ public class Main {
 		prestamoControlador.setPrincipal(principal);
 		prestamoControlador.setLibroModelo(libroModelo);
 		prestamoControlador.setSocioModelo(socioModelo);
+		prestamoControlador.setBusquedaPrestamo(busquedaPrestamo);
 		
 		//Ventana principal
 		principal.setVisible(true);

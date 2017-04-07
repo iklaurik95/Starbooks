@@ -51,6 +51,15 @@ public class Gestion_prestamo extends JDialog {
 		lblGestorPrestamos.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		lblGestorPrestamos.setBounds(140, 21, 182, 23);
 		contentPanel.add(lblGestorPrestamos);
+		
+		JButton btnConsultarPrestamo = new JButton("Consultar Prestamo");
+		btnConsultarPrestamo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				prestamoControlador.abrirBusquedaPrestamo();
+			}
+		});
+		btnConsultarPrestamo.setBounds(140, 149, 182, 23);
+		contentPanel.add(btnConsultarPrestamo);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -70,8 +79,6 @@ public class Gestion_prestamo extends JDialog {
 	public void setPrestamoControlador(Prestamo_controlador prestamoControlador) {
 		this.prestamoControlador = prestamoControlador;
 	}
-
-	
 }
 		
 

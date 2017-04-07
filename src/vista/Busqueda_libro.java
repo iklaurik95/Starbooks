@@ -91,7 +91,7 @@ public class Busqueda_libro extends JDialog {
 		panelTitulo.add(lblAutor);
 		
 		JLabel lblNumpag = new JLabel("NumPag:");
-		lblNumpag.setBounds(20, 123, 46, 14);
+		lblNumpag.setBounds(20, 123, 91, 14);
 		panelTitulo.add(lblNumpag);
 		
 		JPanel panelNumPag = new JPanel();

@@ -16,13 +16,31 @@ public class Prestamo_modelo extends Conector {
 	}
 
 	public ArrayList<Prestamo> select() {
-		ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
+		ArrayList<Prestamo> prestamos_socio = new ArrayList<Prestamo>();
 		try {
 			Statement st = this.conexion.createStatement();
 			ResultSet rs = st.executeQuery("select * from prestamos");
 			while (rs.next()) {
-				Prestamo prestamo = new Prestamo(rs.getInt("id_libro"), rs.getInt("id_socio"), rs.getDate("fecha"),rs.getBoolean("devuelto"));
-				prestamos.add(prestamo);
+				Libro libro = new Libro();
+				libro.setId(rs.getInt("idLibro"));
+				libro.setAutor(rs.getString("autor"));
+				libro.setNum_pag(rs.getInt("num_pag"));
+				libro.setTitulo(rs.getString("titulo"));
+				
+				Socio socio = new Socio();
+				socio.setId(rs.getInt("idSocio"));
+				socio.setNombre(rs.getString("nombre"));
+				socio.setApellido(rs.getString("apelllido"));
+				socio.setDireccion(rs.getString("direccion"));
+				socio.setPoblacion(rs.getString("poblacion"));
+				socio.setProvincia(rs.getString("provincia"));
+				
+				Prestamo prestamo = new Prestamo();
+				prestamo.setLibro(libro);
+				prestamo.setFecha(rs.getDate("fecha"));
+				prestamo.setDevuelto(rs.getBoolean("devuelto"));
+				
+				prestamos_socio.add(prestamo);
 			}
 		}
 
@@ -30,7 +48,7 @@ public class Prestamo_modelo extends Conector {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return prestamos;
+		return prestamos_socio;
 
 	}
 
@@ -42,8 +60,8 @@ public class Prestamo_modelo extends Conector {
 			ResultSet rs = st.executeQuery("select * from prestamos " + "where id_libro='" + id_libro + "' and "
 					+ "id_socio='" + id_socio + "' and " + "fecha='" + eus_format.format(fecha) + "'");
 			rs.next();
-			Prestamo prestamo = new Prestamo(id_libro, id_socio, fecha, rs.getBoolean("devuelto"));
-			return prestamo;
+			//Prestamo prestamo = new Prestamo(id_libro, id_socio, fecha, rs.getBoolean("devuelto"));
+			//return prestamo;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -58,11 +76,13 @@ public class Prestamo_modelo extends Conector {
 		try {
 
 			Statement st = this.conexion.createStatement();
-			ResultSet rs = st.executeQuery("select * from prestamos where id_socio=" + id_socio);
+			ResultSet rs = st.executeQuery("SELECT libros.*,prestamos.* FROM `prestamos` JOIN libros ON prestamos.id_libro=libros.id WHERE id_socio =" + id_socio);
 			while (rs.next()) {
-				Prestamo prestamo = new Prestamo(rs.getInt("id_libro"), rs.getInt("id_socio"), rs.getDate("fecha"),
-						rs.getBoolean("devuelto"));
-				prestamos_socio.add(prestamo);
+				
+				Libro libro = new Libro();
+				
+				
+				
 			}
 			return prestamos_socio;
 		} catch (SQLException e) {

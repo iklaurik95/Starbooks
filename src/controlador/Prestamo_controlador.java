@@ -11,6 +11,7 @@ import modelo.Prestamo;
 import modelo.Prestamo_modelo;
 import modelo.Socio;
 import modelo.Socio_modelo;
+import vista.Busqueda_prestamo;
 import vista.Formulario_prestamo;
 import vista.Gestion_prestamo;
 import vista.Principal;
@@ -22,6 +23,9 @@ public class Prestamo_controlador {
 	private Libro_modelo libroModelo;
 	private Formulario_prestamo formularioPrestamo;
 	private Gestion_prestamo gestionPrestamo;
+	private Busqueda_prestamo busquedaPrestamo;
+	
+
 	private Principal principal;
 	
 	
@@ -87,11 +91,25 @@ public class Prestamo_controlador {
 		}else{
 			JOptionPane.showMessageDialog(this.formularioPrestamo, "IdSocio no existe", "Socio", JOptionPane.ERROR_MESSAGE);
 		}
-		
-		
-		
+				
+	}
+	
+	public Busqueda_prestamo getBusquedaPrestamo() {
+		return busquedaPrestamo;
+	}
+	public void setBusquedaPrestamo(Busqueda_prestamo busquedaPrestamo) {
+		this.busquedaPrestamo = busquedaPrestamo;
+	}
+	public void abrirBusquedaPrestamo() {
+		// TODO Auto-generated method stub
+		this.busquedaPrestamo.setVisible(true);
+	}
+	public void mostrarPrestamoDelSocio(int idSocio) {
+		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 	
 	
